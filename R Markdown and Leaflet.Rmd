@@ -1,0 +1,29 @@
+---
+title: "R Markdown and Leaflet Project"
+author: "Sheng Xu"
+date: "12/22/2021"
+output: html_document
+---
+
+## Intro
+
+Create a web page using R Markdown that features a map created with Leaflet. 
+
+Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. 
+
+## Mapping Clusters
+
+```{r}
+library(leaflet)
+
+df <- data.frame(lat = runif(500, min = 39.25, max = 39.35),
+                 lng = runif(500, min = -76.65, max = -76.55))
+                 
+df %>% 
+    leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(clusterOptions = markerClusterOptions())
+```
+
